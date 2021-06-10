@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const serverConfig = require('./config/config');
 const routes = require('./routes');
 
@@ -7,6 +8,17 @@ const app = express();
 
 // add middleware for parsing JSON
 app.use(express.json());
+
+// // connect to mongoose
+// mongoose.connect(process.env.MONGODB, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false
+// }, (err) => {
+//     if (err) throw err;
+//     console.log('Connected to MongoDB');
+// })
 
 // set routes of the server
 routes(app);
